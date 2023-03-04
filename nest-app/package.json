@@ -1,8 +1,8 @@
 {
   "name": "nest-app",
   "version": "0.0.1",
-  "description": "Tran Hoang Nam <k59tranhoangnam@gmail.com> ()",
-  "author": "",
+  "description": "",
+  "author": "Tran Hoang Nam <k59tranhoangnam@gmail.com> ()",
   "private": true,
   "license": "UNLICENSED",
   "engines": {
@@ -23,11 +23,11 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@ltv/env": "^3.0.0",
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
     "dotenv": "^16.0.3",
+    "pug": "^3.0.2",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0"
   },

@@ -1,0 +1,39 @@
+header.header
+    .grid
+        nav.header__navbar
+            ul.header__navbar-list
+                li.header__navbar-item
+                    a.header__navbar-item-link(href='#') Open in mobile app
+                li.header__navbar-item
+                    span.header__navbar-item-tittle Connect
+                    a.header__navbar-item-link--icon(href='#')
+                        i.header__navbar-icon.fa-brands.fa-facebook
+                    a.header__navbar-item-link--icon(href='#')
+                        i.header__navbar-icon.fa-brands.fa-instagram
+            ul.header__navbar-list
+                li.header__navbar-item
+                    a.header__navbar-item-link(href='#')
+                        i.header__navbar-icon.fa-regular.fa-bell
+                        | Notification
+                li.header__navbar-item
+                    a.header__navbar-item-link(href='#')
+                        i.header__navbar-icon.fa-solid.fa-question
+                        | Help
+                if true
+                    li.header__navbar-item
+                        a.header__navbar-item-link.header__navbar-item--strong(href='#') Sign up
+                    li.header__navbar-item
+                        a.header__navbar-item-link.header__navbar-item--strong(href='#') Sign in
+                else
+                    li.header__navbar-item
+                        a.header__navbar-item-link.header__navbar-item--strong(href='#') Hi, username
+        .header-search
+            img.header__logo(src='imgs/logo.svg' alt='logo')
+            .header__search
+                input.header__search-input(type='text' placeholder='Search product')
+                button.header__search-btn
+                    i.header__search-btn-icon.fa-solid.fa-magnifying-glass
+            .header__cart
+                i.header__cart-icon.fa-regular.fa-cart-shopping
+            //- .header__login
+            //-     i.header__login-right-to-bracket.fa-solid.fa-right-to-bracket

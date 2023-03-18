@@ -1,0 +1,27 @@
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(name='author' content='Tran Hoang Nam')
+        title Nam mobile phone shop
+        block preconnect 
+            include shared/preconnect.pug
+        block style 
+            include shared/style.pug
+    body 
+        .app
+            block header 
+                include header/header.pug
+            block container  
+                .app__container
+                    .grid
+                        .grid__row.app__content
+                            include category/category.pug
+                            .grid__column-10
+                                include filter/filter.pug
+                                block content 
+            block footer 
+                include footer/footer.pug
+        block script 
+            include shared/script.pug

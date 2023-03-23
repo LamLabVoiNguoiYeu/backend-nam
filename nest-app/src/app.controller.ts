@@ -1,4 +1,4 @@
-import { Controller, Get, Render, Res, UseInterceptors } from '@nestjs/common';
+import { Controller, Get, Render, UseInterceptors } from '@nestjs/common';
 import { AppService } from './app.service';
 import { TimingInterceptor } from './interceptors/processing-time.interceptor';
 
@@ -13,16 +13,16 @@ export class AppController {
     return { tittle: 'Index page!' };
   }
 
-  @Get('/login')
-  @Render('content/login')
+  @Get('/signin')
+  @Render('content/signin')
   getLoginPage() {
-    return { tittle: 'Login page!' };
+    return { tittle: 'Signin page!' };
   }
 
-  @Get('/register')
-  @Render('content/register')
+  @Get('/signup')
+  @Render('content/signup')
   getRegisterPage() {
-    return { tittle: 'Register page!' };
+    return { tittle: 'Signup page!' };
   }
 
   @Get('/apple')

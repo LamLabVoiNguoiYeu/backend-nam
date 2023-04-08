@@ -30,8 +30,9 @@ model Product {
   description String?
   price       Float
   image       String?
+  quantity    Int
   category    String
-  orderDetail OrderDetail[]
+  orders      OrderDetail[]
   comments    Comment[]
   createdAt   DateTime      @default(now())
   updateAt    DateTime      @updatedAt()
@@ -45,16 +46,19 @@ model Order {
   totalAmount Float
   orderDetail OrderDetail[]
   createdAt   DateTime      @default(now())
+  updateAt    DateTime      @updatedAt()
 }
 
 model OrderDetail {
-  id        String  @id @default(uuid())
+  id        String   @id @default(uuid())
   orderId   String
-  order     Order   @relation(fields: [orderId], references: [id])
+  order     Order    @relation(fields: [orderId], references: [id])
   productId String
-  product   Product @relation(fields: [productId], references: [id])
+  product   Product  @relation(fields: [productId], references: [id])
   quantity  Int
   price     Float
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt()
 }
 
 model Comment {
@@ -65,4 +69,5 @@ model Comment {
   product   Product  @relation(fields: [productId], references: [id])
   content   String
   createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt()
 }

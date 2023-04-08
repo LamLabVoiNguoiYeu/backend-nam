@@ -5,6 +5,7 @@ import { env } from 'process';
 import { AppModule } from './app.module';
 
 import * as dotenv from 'dotenv';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 dotenv.config();
 
@@ -13,6 +14,14 @@ async function bootstrap() {
   app.useStaticAssets(join(__dirname, '..', 'public'));
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.setViewEngine('pug');
+
+  const config = new DocumentBuilder()
+    .setTitle('Mobile phone shop example')
+    .setDescription('The mobile phone shop API description')
+    .setVersion('1.0.0')
+    .build();
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, document);
 
   await app.listen(env.PORT);
   console.log(`Application is running on: ${await app.getUrl()}`);

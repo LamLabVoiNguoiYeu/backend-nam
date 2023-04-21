@@ -3,9 +3,9 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 import { env } from 'process';
 import { AppModule } from './app.module';
-
 import * as dotenv from 'dotenv';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { ValidationPipe } from '@nestjs/common';
 
 dotenv.config();
 
@@ -14,6 +14,7 @@ async function bootstrap() {
   app.useStaticAssets(join(__dirname, '..', 'public'));
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.setViewEngine('pug');
+  app.useGlobalPipes(new ValidationPipe());
 
   const config = new DocumentBuilder()
     .setTitle('Mobile phone shop example')

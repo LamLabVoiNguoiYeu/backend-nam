@@ -1,20 +1,83 @@
-import { Injectable, NotImplementedException } from '@nestjs/common';
-import { AuthDto } from './dto/auth.dto';
+import { Injectable } from '@nestjs/common';
+import { CreateAuthDto } from './dto/create-auth.dto';
+import { PrismaService } from 'src/prisma/prisma.service';
+import { JwtService } from '@nestjs/jwt';
+// import * as bcrypt from 'bcrypt';
+// import { jwtSecret } from 'src/utils/constants';
+import { Request, Response } from 'express';
 
 @Injectable()
 export class AuthService {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  signup(_dto: AuthDto) {
-    throw new NotImplementedException();
+  constructor(private prisma: PrismaService, private jwt: JwtService) {}
+
+  async signup(dto: CreateAuthDto) {
+    // const { email, password } = dto;
+    // const userExists = await this.prisma.user.findUnique({ where: { email } });
+    // if (userExists) {
+    //   throw new BadRequestException('Email already exists');
+    // }
+    // const hashedPassword = await this.hashPassword(password);
+    // await this.prisma.user.create({
+    //   data: {
+    //     email,
+    //     hashedPassword,
+    //   },
+    // });
+    // return { message: 'User created succefully' };
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  signin(_dto: AuthDto, _req: any, _res: any) {
-    throw new NotImplementedException();
+  async signin(dto: CreateAuthDto, req: Request, res: Response) {
+    // const { email, password } = dto;
+    // const foundUser = await this.prisma.user.findUnique({
+    //   where: {
+    //     email,
+    //   },
+    // });
+    // if (!foundUser) {
+    //   throw new BadRequestException('Wrong credentials');
+    // }
+    // const compareSuccess = await this.comparePasswords({
+    //   password,
+    //   hash: foundUser.hashedPassword,
+    // });
+    // if (!compareSuccess) {
+    //   throw new BadRequestException('Wrong credentials');
+    // }
+    // const token = await this.signToken({
+    //   userId: foundUser.id,
+    //   email: foundUser.email,
+    // });
+    // if (!token) {
+    //   throw new ForbiddenException('Could not signin');
+    // }
+    // res.cookie('token', token, {});
+    // return res.send({ message: 'Logged in succefully' });
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  signout(_req: any, _res: any) {
-    throw new NotImplementedException();
+  async signout(req: Request, res: Response) {
+    // res.clearCookie('token');
+    // return res.send({ message: 'Logged out succefully' });
   }
+
+  // async hashPassword(password: string) {
+  //   const saltOrRounds = 10;
+  //   return await bcrypt.hash(password, saltOrRounds);
+  // }
+
+  // async comparePasswords(args: { hash: string; password: string }) {
+  //   return await bcrypt.compare(args.password, args.hash);
+  // }
+
+  // async signToken(args: { userId: string; email: string }) {
+  //   const payload = {
+  //     id: args.userId,
+  //     email: args.email,
+  //   };
+
+  //   const token = await this.jwt.signAsync(payload, {
+  //     secret: jwtSecret,
+  //   });
+
+  //   return token;
+  // }
 }

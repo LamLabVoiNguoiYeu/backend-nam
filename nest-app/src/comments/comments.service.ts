@@ -1,30 +1,32 @@
-import { Injectable, NotImplementedException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { CreateCommentDto } from './dto/create-comment.dto';
 import { UpdateCommentDto } from './dto/update-comment.dto';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class CommentsService {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  constructor(private prisma: PrismaService) {}
+
   async create(createCommentDto: CreateCommentDto) {
-    throw new NotImplementedException();
+    return await this.prisma.comment.create({ data: createCommentDto });
   }
 
   async findAll() {
-    throw new NotImplementedException();
+    return await this.prisma.comment.findMany();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  async findOne(id: number) {
-    throw new NotImplementedException();
+  async findOne(id: string) {
+    return await this.prisma.comment.findFirstOrThrow({ where: { id } });
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  async update(id: number, updateCommentDto: UpdateCommentDto) {
-    throw new NotImplementedException();
+  async update(id: string, updateCommentDto: UpdateCommentDto) {
+    return await this.prisma.comment.update({
+      where: { id },
+      data: updateCommentDto,
+    });
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  async remove(id: number) {
-    throw new NotImplementedException();
+  async remove(id: string) {
+    return await this.prisma.comment.delete({ where: { id } });
   }
 }

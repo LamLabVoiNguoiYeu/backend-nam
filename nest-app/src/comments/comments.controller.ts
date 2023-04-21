@@ -7,7 +7,14 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import {
+  ApiBadRequestResponse,
+  ApiCreatedResponse,
+  ApiInternalServerErrorResponse,
+  ApiOkResponse,
+  ApiOperation,
+  ApiTags,
+} from '@nestjs/swagger';
 import { CommentsService } from './comments.service';
 import { CreateCommentDto } from './dto/create-comment.dto';
 import { UpdateCommentDto } from './dto/update-comment.dto';
@@ -17,28 +24,49 @@ import { UpdateCommentDto } from './dto/update-comment.dto';
 export class CommentsController {
   constructor(private readonly commentsService: CommentsService) {}
 
+  @ApiOperation({ summary: 'Add new comment' })
+  @ApiCreatedResponse({
+    description: 'The comment has been successfully created!',
+  })
+  @ApiBadRequestResponse({ description: 'Bad request!' })
+  @ApiInternalServerErrorResponse({ description: 'Internal Server Error!' })
   @Post()
-  create(@Body() createCommentDto: CreateCommentDto) {
-    return this.commentsService.create(createCommentDto);
+  async create(@Body() createCommentDto: CreateCommentDto) {
+    return await this.commentsService.create(createCommentDto);
   }
 
+  @ApiOperation({ summary: 'Get all comments' })
+  @ApiOkResponse({ description: 'Get all comments successfully!' })
   @Get()
-  findAll() {
-    return this.commentsService.findAll();
+  async findAll() {
+    return await this.commentsService.findAll();
   }
 
+  @ApiOperation({ summary: 'Get comment by id' })
+  @ApiOkResponse({ description: 'Get comment by id successfully!' })
+  @ApiInternalServerErrorResponse({ description: 'Internal Server Error!' })
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.commentsService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    return await this.commentsService.findOne(id);
   }
 
+  @ApiOperation({ summary: 'Update comment by id' })
+  @ApiOkResponse({ description: 'The comment has been successfully updated!' })
+  @ApiInternalServerErrorResponse({ description: 'Internal Server Error!' })
+  @ApiBadRequestResponse({ description: 'Bad request!' })
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCommentDto: UpdateCommentDto) {
-    return this.commentsService.update(+id, updateCommentDto);
+  async update(
+    @Param('id') id: string,
+    @Body() updateCommentDto: UpdateCommentDto,
+  ) {
+    return await this.commentsService.update(id, updateCommentDto);
   }
 
+  @ApiOperation({ summary: 'Delete comment by id' })
+  @ApiOkResponse({ description: 'The comment has been successfully deleted!' })
+  @ApiInternalServerErrorResponse({ description: 'Internal Server Error!' })
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.commentsService.remove(+id);
+  async remove(@Param('id') id: string) {
+    return await this.commentsService.remove(id);
   }
 }

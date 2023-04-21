@@ -1,11 +1,11 @@
 import { Controller, Get, Render, UseInterceptors } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
 import { AppService } from './app.service';
 import { TimingInterceptor } from './interceptors/processing-time.interceptor';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller()
-@ApiTags('app')
 @UseInterceptors(TimingInterceptor)
+@ApiTags('app')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 

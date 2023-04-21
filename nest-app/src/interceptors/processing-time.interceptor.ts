@@ -16,9 +16,7 @@ export class TimingInterceptor implements NestInterceptor {
 
     return next.handle().pipe(
       tap(() => {
-        // const end = Date.now();
         const response = context.switchToHttp().getResponse();
-        // response.header('X-Server-Response-Time', end - now);
         const loadTime = Date.now() - start;
         response.locals.time = loadTime;
       }),

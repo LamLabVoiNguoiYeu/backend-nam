@@ -7,7 +7,6 @@ import { ApiTags } from '@nestjs/swagger';
 @ApiTags('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
-
   @Post('signup')
   signup(@Body() dto: CreateAuthDto) {
     return this.authService.signup(dto);

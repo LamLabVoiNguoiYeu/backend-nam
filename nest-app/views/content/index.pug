@@ -1,0 +1,24 @@
+extend  ../main.pug
+
+mixin Product(url, name, price, brand, country)
+    .grid__column-2-4
+        a.home-product-item(href='#')
+            .home-product-item__img(style= url)
+            h4.home-product-item__name= name
+            span.home-product-item__price= price
+            .home-product-item__origin
+                span.home-product-item__brand= brand 
+                span.home-product-item__origin-country= country
+
+append content 
+    .home-product
+        .grid__row
+            +Product ('background-image: url(imgs/iphone14promax.jpg);', "Iphone 14 Pro Max 256Gb", "1500$", "Apple", "USA")
+            +Product ('background-image: url(imgs/iphone14pro.jpg);', "Iphone 14 Pro 256Gb", "1400$", "Apple", "USA")
+            +Product ('background-image: url(imgs/iphone14plus.jpg);', "Iphone 14 Plus 256Gb", "1300$", "Apple", "USA")
+            +Product ('background-image: url(imgs/iphone14.jpg);', "Iphone 14 256Gb", "1200$", "Apple", "USA")
+            +Product ('background-image: url(imgs/iphone13promax.jpg);', "Iphone 13 Pro Max 256Gb", "1100$", "Apple", "USA")
+            +Product ('background-image: url(imgs/iphone13pro.jpg);', "Iphone 13 Pro 256Gb", "1000$", "Apple", "USA")
+            +Product ('background-image: url(imgs/iphone13.jpg);', "Iphone 13 256Gb", "900$", "Apple", "USA")
+            +Product ('background-image: url(imgs/iphone13mini.jpg);', "Iphone 13 Mini 256Gb", "800$", "Apple", "USA")
+            +Product ('background-image: url(imgs/iphone12promax.jpg);', "Iphone 12 Pro Max 256Gb", "700$", "Apple", "USA")

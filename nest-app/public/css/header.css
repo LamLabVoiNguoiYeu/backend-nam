@@ -1,0 +1,133 @@
+.header{
+    height: var(--header-height);
+    background-image: linear-gradient(0, #05059b, #6464e8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+}
+
+.header__navbar{
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__navbar-list{
+    list-style: none;
+    padding-left: 0;
+    margin-top: 5px;
+}
+
+.header__navbar-item{
+    margin: 0 8px;
+    position: relative;
+    min-height: 26px;
+}
+
+.header__navbar-item,
+.header__navbar-item-link{
+    display: inline-block;
+    font-size: 1.7rem;
+    color: var(--white-color);
+    text-decoration: none;
+    font-weight: 300;
+}
+
+.header__navbar-item--strong{
+    font-weight: 400;
+}
+
+.header__navbar-item-link:hover,
+.header__navbar-icon:hover{
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.header__navbar-item-link--icon{
+    color: var(--white-color);
+    text-decoration: none;
+}
+
+.header__navbar-item,
+.header__navbar-item-link,
+.header__navbar-icon{
+    display: inline-flex;
+    align-items: center;
+}
+
+.header__navbar-icon{
+    font-size: 2.5rem;
+    margin: 0 10px;
+}
+
+.header__navbar-item-tittle{
+    cursor: text;
+    color: var(--white-color);
+}
+
+/*header with search*/
+
+.header-search{
+    height: var(--header-search-height);
+    display: flex;
+    align-items: center;
+}
+
+.header__logo{
+    width: 200px;
+    margin-right: 50px;
+    margin-bottom: 20px;
+}
+
+.header__search{
+    display: flex;
+    align-items: center;
+    background-color: var(--white-color);
+    height: 40px;
+    flex: 1;
+    border-radius: 2px;
+}
+
+.header__cart{
+    width: 150px;
+    text-align: center;
+}
+
+.header__cart-icon{
+    color: #78bace;
+    font-size: 2.4rem;
+}
+
+.header__search-input{
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 1.3rem;
+    color: var(--text-color);
+    padding: 0 20px;
+    border-radius: 3px;
+}
+
+.header__search-btn{
+    background-color: #9ea6b6;
+    border: none;
+    height: 36px;
+    border-radius: 3px;
+    margin-right: 3px;
+}
+
+.header__search-btn-icon{
+    font-size: 1.6rem;
+    color: var(--black-color);
+    margin: 0 20px;
+}
+
+.header__logo:hover,
+.header__search-btn-icon:hover,
+.header__cart-icon:hover{
+    cursor: pointer;
+    color: rgb(255, 255, 255, 0.5);
+    transform: translateY(-1px);
+}
